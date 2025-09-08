@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator animator;
 
     [SerializeField] private AudioClip collectSound; // MOD: som ao coletar
+    [SerializeField] private AudioClip collectHit;
     private AudioSource audioSource;                 // MOD: referência ao AudioSource
 
 
@@ -27,6 +28,11 @@ public class Player : MonoBehaviour
     {
         moveInput = Input.GetAxisRaw("Horizontal");
         CheckAlive();
+
+        if (Input.GetKeyDown(KeyCode.K)) 
+        {
+            
+        }
     }
 
     void FixedUpdate()
@@ -70,6 +76,11 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("Trash"))
         {
             DepleteLife();
+            if (collectHit != null)
+            {
+                audioSource.PlayOneShot(collectHit);
+            }
+
         }
 
     }
@@ -90,6 +101,9 @@ public class Player : MonoBehaviour
         //randomFood.StopCoroutine(randomFood.StartGeneratingFood());
         randomFood.StopFoodGeneration(); 
         animator.SetTrigger("Death");
+
+
+        FindObjectOfType<DeathScreen>().ShowDeathScreen();
     }
 
     public void DepleteLife()
@@ -98,6 +112,7 @@ public class Player : MonoBehaviour
         {
             GameManager.lives -= 20;
             animator.SetTrigger("Damage");
+
         }    
     }
 
@@ -108,7 +123,8 @@ public class Player : MonoBehaviour
         {
             isAlive = false;
             Death();
-            
+
+
         }
     }
 
