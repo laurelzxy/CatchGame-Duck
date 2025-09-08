@@ -11,6 +11,9 @@ public class RandomFood : MonoBehaviour
     public Collider2D area;
     public static int foodEaten = 0;
 
+
+    private Coroutine foodRoutine;
+
     public Food GetRandomFood()
     {
         if (foods == null || foods.Count == 0)
@@ -48,4 +51,23 @@ public class RandomFood : MonoBehaviour
             SpawnFood();
         }
     }
+
+
+    public void StartFoodGeneration()
+    {
+        if (foodRoutine == null)
+        {
+            foodRoutine = StartCoroutine(StartGeneratingFood());
+        }
+    }
+
+    public void StopFoodGeneration()
+    {
+        if (foodRoutine != null)
+        {
+            StopCoroutine(foodRoutine);
+            foodRoutine = null;
+        }
+    }
+
 }

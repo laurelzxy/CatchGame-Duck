@@ -38,7 +38,8 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        StartCoroutine(randomFood.StartGeneratingFood());
+        randomFood.StartFoodGeneration(); // MOD: agora guarda referência e pode ser parado
+
     }
 
     public void TimeEvents()

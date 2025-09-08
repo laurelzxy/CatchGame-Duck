@@ -11,9 +11,16 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Animator animator;
 
+    [SerializeField] private AudioClip collectSound; // MOD: som ao coletar
+    private AudioSource audioSource;                 // MOD: referência ao AudioSource
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        audioSource = GetComponent<AudioSource>(); // MOD
+
     }
 
     void Update()
@@ -52,19 +59,37 @@ public class Player : MonoBehaviour
             {
                 GameManager.lives = 100;
             }
+        if (collectSound != null)
+        {
+            audioSource.PlayOneShot(collectSound);
         }
+
+        }
+
 
         if (collision.CompareTag("Trash"))
         {
             DepleteLife();
         }
+
+    }
+
+
+
+    public void OnDeathAnimationEnd()
+    {
+        // Aqui ele desaparece de vez
+        gameObject.SetActive(false);
     }
 
     private void Death()
     {
-        animator.SetTrigger("Death");
+
+
         Debug.Log("Morreu!");
-        randomFood.StopCoroutine(randomFood.StartGeneratingFood());
+        //randomFood.StopCoroutine(randomFood.StartGeneratingFood());
+        randomFood.StopFoodGeneration(); 
+        animator.SetTrigger("Death");
     }
 
     public void DepleteLife()
