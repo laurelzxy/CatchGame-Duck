@@ -9,11 +9,20 @@ public class Player : MonoBehaviour
 
     public RandomFood randomFood;
 
+    public GameManager gameManager;
+
     [SerializeField] private Animator animator;
 
-    [SerializeField] private AudioClip collectSound; // MOD: som ao coletar
+    [SerializeField] private AudioClip collectSound; // som ao coletar
     [SerializeField] private AudioClip collectHit;
+    [SerializeField] private AudioSource stepSong;
+    [SerializeField] private AudioClip patoQuack; // Som do pato
+
+
     private AudioSource audioSource;                 // MOD: referência ao AudioSource
+
+    private float timer;          // contador do tempo
+    private float nextQuackTime;  // próximo tempo para o som
 
 
     void Start()
@@ -22,18 +31,42 @@ public class Player : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>(); // MOD
 
+        nextQuackTime = Random.Range(3f, 8f);
+
     }
 
     void Update()
     {
         moveInput = Input.GetAxisRaw("Horizontal");
         CheckAlive();
+        AliveAnimator();
 
         if (Input.GetKeyDown(KeyCode.K)) 
         {
-            
+            GameManager.lives -= 20;
+        }
+
+        // atualiza o timer
+        timer += Time.deltaTime;
+
+        // se passou do tempo, faz o som e define outro tempo aleatório
+        if (timer >= nextQuackTime)
+        {
+            FazerSom();
+            timer = 0f;
+            nextQuackTime = Random.Range(3f, 8f); // tempo até o próximo som
         }
     }
+
+    void FazerSom()
+    {
+        if (patoQuack != null)
+        {
+            audioSource.PlayOneShot(patoQuack);
+        }
+    }
+
+
 
     void FixedUpdate()
     {
@@ -41,14 +74,21 @@ public class Player : MonoBehaviour
         {
             HandleMovementFlip();
 
+            
+
             rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
             if (moveInput != 0)
             {
+                if (!stepSong.isPlaying)
+                    stepSong.Play();
+
                 animator.SetBool("isRunning", true);
             }
             else
             {
+                if (stepSong.isPlaying)
+                    stepSong.Stop();
                 animator.SetBool("isRunning", false);
             }
         }
@@ -57,6 +97,8 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
+
         if (collision.CompareTag("Food"))
         {
             Destroy(collision.gameObject);
@@ -65,21 +107,20 @@ public class Player : MonoBehaviour
             {
                 GameManager.lives = 100;
             }
-        if (collectSound != null)
-        {
-            audioSource.PlayOneShot(collectSound);
-        }
+
+            if (collectSound != null)
+            {
+                audioSource.PlayOneShot(collectSound);
+            }
 
         }
 
 
         if (collision.CompareTag("Trash"))
         {
+            Destroy(collision.gameObject);
             DepleteLife();
-            if (collectHit != null)
-            {
-                audioSource.PlayOneShot(collectHit);
-            }
+            
 
         }
 
@@ -101,9 +142,15 @@ public class Player : MonoBehaviour
         //randomFood.StopCoroutine(randomFood.StartGeneratingFood());
         randomFood.StopFoodGeneration(); 
         animator.SetTrigger("Death");
+        
 
 
         FindObjectOfType<DeathScreen>().ShowDeathScreen();
+    }
+
+    private void AliveAnimator()
+    {
+        animator.SetBool("isAlive", isAlive);
     }
 
     public void DepleteLife()
@@ -112,6 +159,11 @@ public class Player : MonoBehaviour
         {
             GameManager.lives -= 20;
             animator.SetTrigger("Damage");
+
+            if (collectHit != null)
+            {
+                audioSource.PlayOneShot(collectHit);
+            }
 
         }    
     }
@@ -131,16 +183,23 @@ public class Player : MonoBehaviour
     private bool isFacingRight = false;
     private void HandleMovementFlip()
     {
+        
+
         if (moveInput >= 0 && !isFacingRight)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
             isFacingRight = true;
+
+            
         }
         else if (moveInput < 0 && isFacingRight)
         {
             {
                 transform.rotation = Quaternion.Euler(0, 180, 0);
                 isFacingRight = false;
+
+                
+
             }
         }
     }

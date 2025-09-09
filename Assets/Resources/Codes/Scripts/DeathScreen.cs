@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class DeathScreen : MonoBehaviour
@@ -7,17 +8,30 @@ public class DeathScreen : MonoBehaviour
     [SerializeField] private GameObject deathCanvas;
     [SerializeField] private GameObject[] otherCanvases;
 
+    [SerializeField] private AudioClip backgroundSongs;
+     private AudioSource AudioSource;
+
     void Start()
     {
+
+        AudioSource = GetComponent<AudioSource>(); // MOD
+
         // Garante que começa desligado
         if (deathCanvas != null)
             deathCanvas.SetActive(false);
+
+       
     }
 
     public void ShowDeathScreen()
     {
         // Inicia a espera de 10 segundos antes de mostrar a tela
         StartCoroutine(ShowAfterDelay(2f));
+
+        if (backgroundSongs != null)
+        {
+            AudioSource.PlayOneShot(backgroundSongs);
+        }
     }
 
     private IEnumerator ShowAfterDelay(float delay)
@@ -38,6 +52,8 @@ public class DeathScreen : MonoBehaviour
 
         // Pausa o jogo (se não quiser pausar, pode remover)
         Time.timeScale = 0f;
+
+       
 
 
     }

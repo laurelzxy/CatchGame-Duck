@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e61800836f8281543b2f69b5c8f28bc0
+guid: 3a43794c391fc3c45a34e177c851159c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2639637860946151724
-    second: bar_shadow_square_large_0
+      213: 7161268180630708012
+    second: fruit_apple_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,7 +48,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bar_shadow_square_large_0
+      name: fruit_apple_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 96
-        height: 24
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c290e5d26a0e1a420800000000000000
-      internalID: 2639637860946151724
+      spriteID: c2f1dcfd77fe16360800000000000000
+      internalID: 7161268180630708012
       vertices: []
       indices: 
       edges: []
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bar_shadow_square_large_0: 2639637860946151724
+      fruit_apple_0: 7161268180630708012
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

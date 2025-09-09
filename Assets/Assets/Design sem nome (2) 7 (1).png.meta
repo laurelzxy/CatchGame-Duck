@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e61800836f8281543b2f69b5c8f28bc0
+guid: d786ed85997474e4a971376c91a50fdb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2639637860946151724
-    second: bar_shadow_square_large_0
+      213: 8230894243440109597
+    second: Design sem nome (2) 7 (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bar_shadow_square_large_0
+      name: Design sem nome (2) 7 (1)_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 96
-        height: 24
+        x: 368
+        y: 21
+        width: 1087
+        height: 900
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c290e5d26a0e1a420800000000000000
-      internalID: 2639637860946151724
+      spriteID: d182e0c84b20a3270800000000000000
+      internalID: 8230894243440109597
       vertices: []
       indices: 
       edges: []
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bar_shadow_square_large_0: 2639637860946151724
+      Design sem nome (2) 7 (1)_0: 8230894243440109597
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -34,16 +34,21 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         StartGame();
+        lives = 100;
+
+
     }
 
     public void StartGame()
     {
-        randomFood.StartFoodGeneration(); // MOD: agora guarda referência e pode ser parado
+        randomFood.StartFoodGeneration(); // agora guarda referência e pode ser parado
 
     }
 
     public void TimeEvents()
     {
+
+
         if (timeElapsed >= 90f)
         {
             player.moveSpeed = 11f;

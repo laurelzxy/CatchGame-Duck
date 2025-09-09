@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e61800836f8281543b2f69b5c8f28bc0
+guid: 1ef8b8c64483eeb4bba86f6deb03aee0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2639637860946151724
-    second: bar_shadow_square_large_0
+      213: 192766139702281695
+    second: ducky_2_spritesheet (1) 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,7 +48,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bar_shadow_square_large_0
+      name: ducky_2_spritesheet (1) 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 96
-        height: 24
+        width: 34
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c290e5d26a0e1a420800000000000000
-      internalID: 2639637860946151724
+      spriteID: fd58da168c7dca200800000000000000
+      internalID: 192766139702281695
       vertices: []
       indices: 
       edges: []
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bar_shadow_square_large_0: 2639637860946151724
+      ducky_2_spritesheet (1) 1_0: 192766139702281695
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
